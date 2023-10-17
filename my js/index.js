@@ -1,49 +1,29 @@
-let count = 0;
- 
-const num = document.getElementById("myNumber");
-const btninc = document.getElementById("btnIncrease");
-const btndec = document.getElementById("btnDecrease");
-const btnres = document.getElementById("btnReset");
+// Rasgele bir sayı seçme
+const secretNumber = Math.floor(Math.random() * 100) + 1;
 
-//sayacı arttırıp rengini düzenledim arttırma işlemi için 
-btninc.addEventListener("click", function(){
-    count++;
-    num.textContent=count;
-    if(count>0){
-        num.style.color="green";
-    }
-    else if(count==0){
-        num.style.color="black";
-    }
-    else{
-        num.style.color="red"
-    }
-});
+let guessCount = 0;
 
-btndec.addEventListener("click",function(){
-    count--;
-    num.textContent=count;
-    if(count>0){
-        num.style.color="green";
-    }
-    else if(count==0){
-        num.style.color="black";
-    }
-    else{
-        num.style.color="red"
-    }
-});
+function checkGuess() {
+    const userGuess = document.getElementById('guessInput').value;
+    const message = document.getElementById('message');
 
-btnres.addEventListener("click",function(){
-    count=0;
-    num.textContent=count;
-    if(count>0){
-        num.style.color="green";
+    if (userGuess == secretNumber) {
+        guessCount++;
+        message.textContent = `Tebrikler! ${guessCount} tahminde doğru bildiniz.`;
+        message.style.color = 'green';
+        disableInputAndButton();
+    } else if (userGuess < secretNumber) {
+        guessCount++;
+        message.textContent = 'Daha büyük bir sayı deneyin.';
+        message.style.color = 'red';
+    } else {
+        guessCount++;
+        message.textContent = 'Daha küçük bir sayı deneyin.';
+        message.style.color = 'red';
     }
-    else if(count==0){
-        num.style.color="black";
-    }
-    else{
-        num.style.color="red"
-    }
-});
+}
+
+function disableInputAndButton() {
+    document.getElementById('guessInput').disabled = true;
+    document.querySelector('button').disabled = true;
+}

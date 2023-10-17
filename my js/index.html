@@ -2,21 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Counter</title>
+    <title>Sayı Tahmin Oyunu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="maindiv">
-    <h1>Online Counter</h1>
-    <span id="myNumber">0</span>
-    <div class="buttonSection">
-        <button id="btnIncrease">Increase</button>  <!-- sayıyı artır-->
-        <button id="btnDecrease">Decrease</button> <!-- sayıyı azalt-->
-        <button id="btnReset">Reset</button>    <!-- sayıyı sıfırla-->
+    <div class="container">
+        <h1>Sayı Tahmin Oyunu</h1>
+        <p id="message">Bir sayı girin ve tahmin edin!</p>
+        <input type="number" id="guessInput">
+        <button onclick="checkGuess()">Tahmin Et</button>
     </div>
-    </div>
+    <script src="index.js"></script>
 </body>
-<script type="text/javascript" src="index.js"></script>
 </html>
